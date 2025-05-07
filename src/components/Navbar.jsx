@@ -26,10 +26,10 @@ export default function Navbar() {
         
         {/* Desktop menu */}
         <ul className="hidden md:flex space-x-6">
-          <li><Link to="/" className="hover:underline">Home</Link></li>
-          <li><Link to="/about" className="hover:underline">About</Link></li>
-          <li><Link to="/services" className="hover:underline">Services</Link></li>
-          <li><Link to="/contact" className="hover:underline">Contact</Link></li>
+          <li><Link to="/" className="hover:text-blue-300 transition-colors">Home</Link></li>
+          <li><Link to="/about" className="hover:text-blue-300 transition-colors">About</Link></li>
+          <li><Link to="/services" className="hover:text-blue-300 transition-colors">Services</Link></li>
+          <li><Link to="/contact" className="hover:text-blue-300 transition-colors">Contact</Link></li>
         </ul>
       </div>
       
@@ -37,10 +37,10 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-blue-800 py-4">
           <ul className="flex flex-col items-center space-y-4">
-            <li><Link to="/" className="hover:underline" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
-            <li><Link to="/about" className="hover:underline" onClick={() => setIsMenuOpen(false)}>About</Link></li>
-            <li><Link to="/services" className="hover:underline" onClick={() => setIsMenuOpen(false)}>Services</Link></li>
-            <li><Link to="/contact" className="hover:underline" onClick={() => setIsMenuOpen(false)}>Contact</Link></li>
+            <li><Link to="/" className="hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
+            <li><Link to="/about" className="hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link></li>
+            <li><Link to="/services" className="hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Services</Link></li>
+            <li><Link to="/contact" className="hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link></li>
           </ul>
         </div>
       )}

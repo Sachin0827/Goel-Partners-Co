@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import ServiceCard from "../components/ServiceCard";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -28,36 +29,36 @@ const services = [
   {
     icon: <FaBalanceScale className="text-4xl text-blue-700 mb-4" />,
     title: "Income Tax Planning",
-    description: "Expert guidance on optimizing your income tax liabilities, ensuring compliance and maximizing savings through strategic planning and up-to-date knowledge of tax laws.",
+    description: "Personalized tax planning solutions for individuals and small businesses, helping you navigate tax laws and maximize savings.",
   },
   {
     icon: <FaFileInvoiceDollar className="text-4xl text-blue-700 mb-4" />,
     title: "GST Compliance",
-    description: "Comprehensive GST services including registration, filing, and advisory to ensure your business remains compliant with the latest GST regulations.",
+    description: "Simplified GST services including registration, filing, and advisory to keep your business compliant with minimal hassle.",
   },
   {
     icon: <FaRegChartBar className="text-4xl text-blue-700 mb-4" />,
-    title: "Tax Audits",
-    description: "Thorough tax audit services to ensure accuracy, transparency, and compliance with statutory requirements, minimizing risk and ensuring peace of mind.",
+    title: "Business Setup & Compliance",
+    description: "End-to-end support for new business registration, compliance requirements, and ongoing statutory filings.",
   },
   {
     icon: <FaLightbulb className="text-4xl text-blue-700 mb-4" />,
-    title: "Strategic Tax Advisory",
-    description: "Personalized tax strategies tailored to your business or personal needs, leveraging deep expertise to provide proactive and effective tax solutions.",
+    title: "Financial Advisory",
+    description: "Strategic financial guidance for startups and small businesses, helping you make informed decisions for growth.",
   },
 ];
 
 const testimonials = [
   {
-    name: "Rajesh Kumar",
-    company: "Kumar Enterprises",
-    text: "Goel Partners & Co has been handling our tax matters for over 5 years. Their expertise and attention to detail have saved us significant amounts in tax liabilities.",
+    name: "Rahul Sharma",
+    company: "TechStart Solutions",
+    text: "As a new startup, we needed guidance on tax compliance and business setup. Their team made everything simple and straightforward.",
     rating: 5,
   },
   {
-    name: "Priya Sharma",
-    company: "Sharma Textiles Ltd.",
-    text: "The team's knowledge of GST regulations is exceptional. They've made compliance simple and hassle-free for our business.",
+    name: "Neha Patel",
+    company: "Creative Designs",
+    text: "The personalized attention and clear communication made tax filing stress-free. Perfect for small businesses like ours.",
     rating: 5,
   },
 ];
@@ -82,16 +83,16 @@ const contactInfo = [
 
 const faqItems = [
   {
-    question: "What tax services do you provide for businesses?",
-    answer: "We offer comprehensive tax services including income tax planning, GST compliance, tax audits, and strategic tax advisory tailored to your business needs."
+    question: "What services do you offer for startups?",
+    answer: "We provide comprehensive support for startups including business registration, tax planning, GST compliance, and ongoing financial advisory services."
   },
   {
     question: "How can I schedule a consultation?",
-    answer: "You can schedule a consultation by calling us, sending an email, or using the contact form on our website. We'll respond promptly to set up a meeting."
+    answer: "You can schedule a consultation by calling us, sending an email, or using the contact form on our website. We offer flexible timing to accommodate your schedule."
   },
   {
-    question: "What documents should I prepare for tax filing?",
-    answer: "For tax filing, you should prepare your income statements, expense receipts, investment documents, and any other financial records relevant to your tax situation."
+    question: "What documents do I need for business registration?",
+    answer: "For business registration, you'll need identity proof, address proof, and basic business details. We'll guide you through the entire process step by step."
   }
 ];
 
@@ -130,10 +131,10 @@ export default function Home() {
       const progress = currentStep / steps;
       
       setCounters({
-        years: Math.floor(progress * 25),
-        clients: Math.floor(progress * 500),
-        savings: Math.floor(progress * 100),
-        audits: Math.floor(progress * 1000)
+        years: Math.floor(progress * 3),
+        clients: Math.floor(progress * 50),
+        savings: Math.floor(progress * 25),
+        audits: Math.floor(progress * 100)
       });
       
       if (currentStep === steps) {
@@ -163,41 +164,63 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section with Background and Animation */}
-      <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-10 -left-10 w-40 h-40 bg-white opacity-5 rounded-full"></div>
-          <div className="absolute top-20 right-20 w-60 h-60 bg-white opacity-5 rounded-full"></div>
-          <div className="absolute bottom-10 left-1/3 w-20 h-20 bg-white opacity-5 rounded-full"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fadeIn">
-              Trusted Chartered Accountancy for Direct & Indirect Tax Consultancy
-            </h1>
-            <p className="text-xl mb-8 animate-fadeIn animation-delay-300">
-              Delivering excellence in tax planning, GST compliance, audits, and strategic advisory for individuals and businesses.
-            </p>
-            <a href="/contact" className="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center transform hover:scale-105 animate-fadeIn animation-delay-500">
-              Schedule a Consultation
-              <FaArrowRight className="ml-2" />
-            </a>
+      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-24 relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            {/* Left side - Text content */}
+            <div className="md:w-1/2 text-center md:text-left">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fadeIn leading-tight">
+                Your Trusted Partner in <span className="text-blue-300">Financial Excellence</span>
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 animate-fadeIn animation-delay-300 text-blue-100">
+                Modern chartered accountancy services for businesses. We make compliance simple and help you focus on growth.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fadeIn animation-delay-500">
+                <Link to="/contact" className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center justify-center transform hover:scale-105 shadow-lg">
+                  Start Your Journey
+                  <FaArrowRight className="ml-2" />
+                </Link>
+                <Link to="/services" className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition duration-300 inline-flex items-center justify-center transform hover:scale-105">
+                  Explore Services
+                  <FaArrowRight className="ml-2" />
+                </Link>
+              </div>
+            </div>
+            
+            {/* Right side - Image */}
+            <div className="md:w-1/2 relative">
+              <div className="relative z-10">
+                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <div className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl">
+                    <img 
+                      src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf" 
+                      alt="Financial Growth and Sustainability"
+                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
+                  </div>
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute -top-6 -right-6 w-24 h-24 bg-blue-400 rounded-full opacity-20 blur-xl"></div>
+                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-300 rounded-full opacity-20 blur-xl"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       
-      {/* Quick Contact Bar with responsive layout - preserving mobile design */}
-      <div className="bg-white py-6 shadow-md">
+      {/* Quick Contact Bar with enhanced design */}
+      <div className="bg-white py-8 shadow-lg transform -mt-8 relative z-20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center">
             <div className="text-center mb-6">
-              <h3 className="text-blue-900 font-bold text-xl">Need Immediate Assistance?</h3>
+              <h3 className="text-blue-900 font-bold text-2xl">Need Immediate Assistance?</h3>
+              <p className="text-gray-600 mt-2">We're here to help you succeed</p>
             </div>
-            <div className="w-full flex flex-col md:flex-row md:justify-center md:space-x-8">
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8">
               {contactInfo.map((item, index) => (
-                <div key={index} className="flex items-start mb-4 md:mb-0 px-4 md:items-center md:justify-center">
-                  <div className="text-xl text-blue-700 mt-1 mr-3 md:mt-0">{item.icon}</div>
+                <div key={index} className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-300">
+                  <div className="text-2xl text-blue-700 mr-4">{item.icon}</div>
                   <div>
                     <p className="text-sm text-gray-600">{item.title}</p>
                     <p className="font-semibold text-blue-900">{item.info}</p>
@@ -211,12 +234,12 @@ export default function Home() {
       
       {/* Main Content */}
       <main className="container mx-auto px-4 py-16">
-        {/* Services Section with Hover Effects */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-3">OUR EXPERTISE</span>
-            <h2 className="text-3xl font-bold text-blue-900 mb-4">Our Services</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Comprehensive tax and financial services tailored to meet your specific needs</p>
+        {/* Services Section with enhanced design */}
+        <section className="mb-24">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">OUR EXPERTISE</span>
+            <h2 className="text-4xl font-bold text-blue-900 mb-6">Comprehensive Services</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">Tailored solutions to meet your specific business needs</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service) => (
@@ -225,174 +248,96 @@ export default function Home() {
           </div>
         </section>
         
-        {/* Why Choose Us Section with Enhanced Design */}
-        <section className="mb-20 bg-gray-50 py-12 px-6 rounded-lg">
-          <div className="text-center mb-12">
-            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-3">WHY US</span>
-            <h2 className="text-3xl font-bold text-blue-900 mb-4">Why Choose Us</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">We combine expertise, personalized service, and a commitment to excellence</p>
+        {/* Why Choose Us Section with enhanced design */}
+        <section className="mb-24 bg-gradient-to-br from-gray-50 to-blue-50 py-16 px-8 rounded-2xl">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">WHY US</span>
+            <h2 className="text-4xl font-bold text-blue-900 mb-6">Why Choose Us</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">We combine expertise, personalized service, and a commitment to excellence</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6 hover:shadow-lg transition-all duration-300 bg-white rounded-lg transform hover:-translate-y-2">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaUserTie className="text-2xl text-blue-700" />
+            <div className="text-center p-8 hover:shadow-xl transition-all duration-300 bg-white rounded-xl transform hover:-translate-y-2">
+              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <FaUserTie className="text-3xl text-blue-700" />
               </div>
-              <h3 className="text-xl font-semibold text-blue-900 mb-2">Expert Team</h3>
-              <p className="text-gray-600">Our professionals have decades of experience in tax consultancy</p>
+              <h3 className="text-2xl font-semibold text-blue-900 mb-4">Expert Team</h3>
+              <p className="text-gray-600">Our professionals bring years of experience and deep industry knowledge</p>
             </div>
-            <div className="text-center p-6 hover:shadow-lg transition-all duration-300 bg-white rounded-lg transform hover:-translate-y-2">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaHandshake className="text-2xl text-blue-700" />
+            <div className="text-center p-8 hover:shadow-xl transition-all duration-300 bg-white rounded-xl transform hover:-translate-y-2">
+              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <FaHandshake className="text-3xl text-blue-700" />
               </div>
-              <h3 className="text-xl font-semibold text-blue-900 mb-2">Personalized Service</h3>
+              <h3 className="text-2xl font-semibold text-blue-900 mb-4">Personalized Service</h3>
               <p className="text-gray-600">Tailored solutions that address your specific financial needs</p>
             </div>
-            <div className="text-center p-6 hover:shadow-lg transition-all duration-300 bg-white rounded-lg transform hover:-translate-y-2">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaShieldAlt className="text-2xl text-blue-700" />
+            <div className="text-center p-8 hover:shadow-xl transition-all duration-300 bg-white rounded-xl transform hover:-translate-y-2">
+              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <FaShieldAlt className="text-3xl text-blue-700" />
               </div>
-              <h3 className="text-xl font-semibold text-blue-900 mb-2">100% Compliance</h3>
+              <h3 className="text-2xl font-semibold text-blue-900 mb-4">100% Compliance</h3>
               <p className="text-gray-600">Perfect record of regulatory compliance and accuracy</p>
             </div>
           </div>
         </section>
         
-        {/* Testimonials Section with Carousel Effect */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-3">TESTIMONIALS</span>
-            <h2 className="text-3xl font-bold text-blue-900 mb-4">What Our Clients Say</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it - hear from our satisfied clients</p>
-          </div>
-          
-          <div className="relative bg-white p-8 rounded-lg shadow-lg border-l-4 border-blue-700 max-w-3xl mx-auto">
-            <FaQuoteLeft className="text-blue-200 text-5xl absolute top-4 left-4 opacity-50" />
-            
-            <div className="relative z-10">
-              <div className="mb-6">
-                <div className="flex mb-2">
-                  {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
-                    <FaStar key={i} className="text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 text-lg italic">{testimonials[activeTestimonial].text}</p>
-              </div>
-              
-              <div className="flex items-center">
-                <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-blue-700 font-bold text-lg">{testimonials[activeTestimonial].name.charAt(0)}</span>
-                </div>
-                <div>
-                  <p className="font-semibold text-blue-900 text-lg">{testimonials[activeTestimonial].name}</p>
-                  <p className="text-gray-600">{testimonials[activeTestimonial].company}</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex justify-center mt-6">
-              {testimonials.map((_, index) => (
-                <button 
-                  key={index} 
-                  onClick={() => setActiveTestimonial(index)}
-                  className={`w-3 h-3 rounded-full mx-1 ${index === activeTestimonial ? 'bg-blue-700' : 'bg-gray-300'}`}
-                  aria-label={`View testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-        
-        {/* Stats Section with Counter Animation */}
-        <section id="stats-section" className="mb-20 py-12 px-6 bg-blue-900 text-white rounded-lg relative overflow-hidden">
+        {/* Stats Section with enhanced design */}
+        <section id="stats-section" className="mb-24 py-16 px-8 bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-2xl relative overflow-hidden">
           {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-40 h-40 bg-blue-800 rounded-full transform translate-x-1/2 -translate-y-1/2 opacity-50"></div>
-          <div className="absolute bottom-0 left-0 w-60 h-60 bg-blue-800 rounded-full transform -translate-x-1/2 translate-y-1/2 opacity-50"></div>
+          <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
           
-          <div className="text-center mb-12 relative z-10">
-            <span className="inline-block px-3 py-1 bg-blue-800 text-white rounded-full text-sm font-semibold mb-3">OUR IMPACT</span>
-            <h2 className="text-3xl font-bold mb-4">Our Impact in Numbers</h2>
-            <p className="max-w-2xl mx-auto opacity-80">We've helped hundreds of clients achieve financial success</p>
+          <div className="text-center mb-16 relative z-10">
+            <span className="inline-block px-4 py-2 bg-blue-800 text-white rounded-full text-sm font-semibold mb-4">OUR GROWTH</span>
+            <h2 className="text-4xl font-bold mb-6">Making an Impact</h2>
+            <p className="max-w-2xl mx-auto text-lg text-blue-100">Building trust and delivering value to our growing client base</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
-            <div className="p-4 bg-blue-800 bg-opacity-30 rounded-lg">
-              <div className="flex items-center justify-center mb-2">
-                <FaAward className="text-3xl text-yellow-400 mr-2" />
-                <div className="text-4xl font-bold">{counters.years}+</div>
+            <div className="p-6 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl hover:bg-opacity-20 transition-all duration-300">
+              <div className="flex items-center justify-center mb-4">
+                <FaAward className="text-4xl text-yellow-400 mr-3" />
+                <div className="text-5xl font-bold">{counters.years}+</div>
               </div>
-              <p>Years of Experience</p>
+              <p className="text-lg">Years of Excellence</p>
             </div>
-            <div className="p-4 bg-blue-800 bg-opacity-30 rounded-lg">
-              <div className="flex items-center justify-center mb-2">
-                <FaHandshake className="text-3xl text-yellow-400 mr-2" />
-                <div className="text-4xl font-bold">{counters.clients}+</div>
+            <div className="p-6 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl hover:bg-opacity-20 transition-all duration-300">
+              <div className="flex items-center justify-center mb-4">
+                <FaHandshake className="text-4xl text-yellow-400 mr-3" />
+                <div className="text-5xl font-bold">{counters.clients}+</div>
               </div>
-              <p>Satisfied Clients</p>
+              <p className="text-lg">Happy Clients</p>
             </div>
-            <div className="p-4 bg-blue-800 bg-opacity-30 rounded-lg">
-              <div className="flex items-center justify-center mb-2">
-                <FaChartLine className="text-3xl text-yellow-400 mr-2" />
-                <div className="text-4xl font-bold">₹{counters.savings}Cr+</div>
+            <div className="p-6 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl hover:bg-opacity-20 transition-all duration-300">
+              <div className="flex items-center justify-center mb-4">
+                <FaChartLine className="text-4xl text-yellow-400 mr-3" />
+                <div className="text-5xl font-bold">₹{counters.savings}L+</div>
               </div>
-              <p>Tax Savings</p>
+              <p className="text-lg">Tax Savings</p>
             </div>
-            <div className="p-4 bg-blue-800 bg-opacity-30 rounded-lg">
-              <div className="flex items-center justify-center mb-2">
-                <FaCheckCircle className="text-3xl text-yellow-400 mr-2" />
-                <div className="text-4xl font-bold">{counters.audits}+</div>
+            <div className="p-6 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl hover:bg-opacity-20 transition-all duration-300">
+              <div className="flex items-center justify-center mb-4">
+                <FaCheckCircle className="text-4xl text-yellow-400 mr-3" />
+                <div className="text-5xl font-bold">{counters.audits}+</div>
               </div>
-              <p>Successful Audits</p>
+              <p className="text-lg">Successful Filings</p>
             </div>
           </div>
         </section>
         
-        {/* FAQ Section */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-3">FAQ</span>
-            <h2 className="text-3xl font-bold text-blue-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about our services</p>
-          </div>
-          
-          <div className="max-w-3xl mx-auto">
-            {faqItems.map((item, index) => (
-              <div key={index} className="mb-4 border border-gray-200 rounded-lg overflow-hidden">
-                <button 
-                  className="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors duration-300 focus:outline-none"
-                  onClick={() => toggleFaq(index)}
-                >
-                  <span className="font-semibold text-blue-900 text-left">{item.question}</span>
-                  <span className={`transform transition-transform duration-300 ${activeFaq === index ? 'rotate-180' : ''}`}>
-                    <FaArrowRight className="transform rotate-90" />
-                  </span>
-                </button>
-                <div 
-                  className={`transition-all duration-300 overflow-hidden ${activeFaq === index ? 'max-h-40' : 'max-h-0'}`}
-                >
-                  <div className="p-4 bg-gray-50 border-t border-gray-200">
-                    <p className="text-gray-700">{item.answer}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-        
-        {/* Contact CTA Section with Enhanced Design */}
-        <section className="bg-gradient-to-r from-blue-800 to-blue-600 p-6 md:p-10 rounded-lg text-center text-white relative overflow-hidden">
+        {/* Contact CTA Section with enhanced design */}
+        <section className="bg-gradient-to-r from-blue-800 to-blue-600 p-12 rounded-2xl text-center text-white relative overflow-hidden">
           {/* Background decoration */}
-          <div className="absolute top-0 left-0 w-full h-full bg-pattern opacity-10"></div>
+          <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
           
           <div className="relative z-10">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Get Started?</h2>
-            <p className="mb-8 max-w-2xl mx-auto text-blue-100">Contact us today for a consultation and discover how we can help optimize your tax strategy.</p>
+            <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
+            <p className="mb-10 max-w-2xl mx-auto text-xl text-blue-100">Contact us today for a consultation and discover how we can help optimize your tax strategy.</p>
             
-            <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
-              <a href="/contact" className="bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 inline-flex items-center justify-center transform hover:scale-105">
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <Link to="/contact" className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 inline-flex items-center justify-center transform hover:scale-105 shadow-lg">
                 <FaEnvelope className="mr-2" />
                 Contact Us
-              </a>
-              <a href="tel:+919996130811" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition duration-300 inline-flex items-center justify-center transform hover:scale-105">
+              </Link>
+              <a href="tel:+919996130811" className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition duration-300 inline-flex items-center justify-center transform hover:scale-105">
                 <FaPhone className="mr-2" />
                 Call Now
               </a>

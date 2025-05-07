@@ -1,149 +1,176 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { FaPaperPlane, FaSpinner } from "react-icons/fa";
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ 
-    name: "", 
-    email: "", 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
     phone: "",
     subject: "",
-    message: "" 
+    message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
-
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setIsSubmitting(true);
+    setSubmitStatus(null);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 1000);
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+      
+      setSubmitStatus({
+        type: "success",
+        message: "Thank you for your message. We'll get back to you soon!",
+      });
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "Something went wrong. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-
-  if (submitted) {
-    return (
-      <div className="bg-green-50 border border-green-200 text-green-700 p-6 rounded-lg text-center">
-        <div className="text-3xl mb-4">✓</div>
-        <h3 className="text-xl font-bold mb-2">Thank you for contacting us!</h3>
-        <p>We've received your message and will get back to you shortly.</p>
-        <button 
-          onClick={() => {
-            setSubmitted(false);
-            setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-          }}
-          className="mt-4 text-blue-700 hover:text-blue-900 font-medium"
-        >
-          Send another message
-        </button>
-      </div>
-    );
-  }
-
+  
   return (
-    <form className="space-y-4" aria-label="Contact form" onSubmit={handleSubmit}>
-      <div className="grid md:grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="name" className="block text-blue-900 font-semibold mb-1">Name *</label>
-          <input 
-            id="name" 
-            name="name" 
-            type="text" 
-            required 
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-            value={form.name} 
-            onChange={handleChange} 
-            placeholder="Your full name"
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+            Your Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300"
+            placeholder="John Doe"
           />
         </div>
+        
         <div>
-          <label htmlFor="email" className="block text-blue-900 font-semibold mb-1">Email *</label>
-          <input 
-            id="email" 
-            name="email" 
-            type="email" 
-            required 
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-            value={form.email} 
-            onChange={handleChange} 
-            placeholder="your.email@example.com"
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300"
+            placeholder="john@example.com"
           />
         </div>
       </div>
       
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="phone" className="block text-blue-900 font-semibold mb-1">Phone</label>
-          <input 
-            id="phone" 
-            name="phone" 
-            type="tel" 
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-            value={form.phone} 
-            onChange={handleChange} 
-            placeholder="Your phone number"
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300"
+            placeholder="+91 98765 43210"
           />
         </div>
+        
         <div>
-          <label htmlFor="subject" className="block text-blue-900 font-semibold mb-1">Subject *</label>
-          <input 
-            id="subject" 
-            name="subject" 
-            type="text" 
+          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+            Subject
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
             required
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-            value={form.subject} 
-            onChange={handleChange} 
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300"
             placeholder="How can we help you?"
           />
         </div>
       </div>
       
       <div>
-        <label htmlFor="message" className="block text-blue-900 font-semibold mb-1">Message *</label>
-        <textarea 
-          id="message" 
-          name="message" 
-          required 
-          rows="5"
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-          value={form.message} 
+        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+          Your Message
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
           onChange={handleChange}
+          required
+          rows="5"
+          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300 resize-none"
           placeholder="Please provide details about your inquiry..."
         ></textarea>
       </div>
       
-      <div className="flex items-center">
-        <input 
-          type="checkbox" 
-          id="privacy" 
-          className="mr-2" 
-          required
-        />
-        <label htmlFor="privacy" className="text-gray-700 text-sm">
-          I agree to the <a href="#" className="text-blue-700 hover:underline">privacy policy</a> and consent to being contacted regarding my inquiry.
-        </label>
-      </div>
+      {submitStatus && (
+        <div
+          className={`p-4 rounded-lg ${
+            submitStatus.type === "success"
+              ? "bg-green-50 text-green-700 border border-green-200"
+              : "bg-red-50 text-red-700 border border-red-200"
+          }`}
+        >
+          {submitStatus.message}
+        </div>
+      )}
       
-      <button 
-        type="submit" 
-        className="bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors duration-300 font-medium flex items-center justify-center"
-        disabled={loading}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className={`w-full flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 ${
+          isSubmitting
+            ? "bg-blue-400 cursor-not-allowed"
+            : "bg-blue-600 hover:bg-blue-700"
+        }`}
       >
-        {loading ? (
+        {isSubmitting ? (
           <>
-            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
+            <FaSpinner className="animate-spin mr-2" />
             Sending...
           </>
-        ) : "Send Message"}
+        ) : (
+          <>
+            <FaPaperPlane className="mr-2" />
+            Send Message
+          </>
+        )}
       </button>
     </form>
   );

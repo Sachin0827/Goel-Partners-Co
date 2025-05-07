@@ -10,9 +10,9 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">Goel Partners & Co</h3>
             <p className="mb-4">Trusted chartered accountants specializing in tax consultancy, GST compliance, audits, and strategic advisory.</p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-blue-300"><FaFacebook /></a>
-              <a href="#" className="hover:text-blue-300"><FaTwitter /></a>
-              <a href="#" className="hover:text-blue-300"><FaLinkedin /></a>
+              <a href="https://facebook.com/goelpartners" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300"><FaFacebook /></a>
+              <a href="https://twitter.com/goelpartners" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300"><FaTwitter /></a>
+              <a href="https://linkedin.com/company/goelpartners" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300"><FaLinkedin /></a>
             </div>
           </div>
           
