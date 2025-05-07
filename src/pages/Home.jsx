@@ -190,12 +190,12 @@ export default function Home() {
             {/* Right side - Image */}
             <div className="md:w-1/2 relative">
               <div className="relative z-10">
-                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8">
                   <div className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl">
                     <img 
-                      src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf" 
+                      src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" 
                       alt="Financial Growth and Sustainability"
-                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
                   </div>
