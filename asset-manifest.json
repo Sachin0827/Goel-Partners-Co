@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Goel-Partners-Co/static/css/main.10d0eb62.css",
+    "main.js": "/Goel-Partners-Co/static/js/main.883e3875.js",
+    "static/js/488.2c2c4401.chunk.js": "/Goel-Partners-Co/static/js/488.2c2c4401.chunk.js",
+    "index.html": "/Goel-Partners-Co/index.html",
+    "main.10d0eb62.css.map": "/Goel-Partners-Co/static/css/main.10d0eb62.css.map",
+    "main.883e3875.js.map": "/Goel-Partners-Co/static/js/main.883e3875.js.map",
+    "488.2c2c4401.chunk.js.map": "/Goel-Partners-Co/static/js/488.2c2c4401.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.10d0eb62.css",
+    "static/js/main.883e3875.js"
+  ]
+}
