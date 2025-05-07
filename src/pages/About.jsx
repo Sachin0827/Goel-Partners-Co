@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { 
   FaUserTie, 
+  FaUserAlt,
+  FaFemale,
   FaHistory, 
   FaAward, 
   FaHandshake, 
@@ -31,6 +33,33 @@ const teamMembers = [
     position: "Senior Tax Consultant",
     bio: "Rajiv brings 12 years of expertise in income tax planning and corporate compliance, helping clients minimize liabilities while ensuring full compliance.",
     education: "Chartered Accountant, LLB"
+  }
+];
+
+const partners = [
+  {
+    name: "Rajiv Goel",
+    position: "Managing Partner",
+    qualification: "FCA, B.Com (Hons)",
+    experience: "25+ years of experience in tax consultancy and audits",
+    specialization: "Income Tax Planning, Strategic Advisory",
+    image: null // Use null to trigger the fallback
+  },
+  {
+    name: "Amit Sharma",
+    position: "Partner",
+    qualification: "ACA, M.Com",
+    experience: "15+ years of experience in GST and indirect taxes",
+    specialization: "GST Compliance, Indirect Taxation",
+    image: null
+  },
+  {
+    name: "Priya Verma",
+    position: "Partner",
+    qualification: "FCA, LLB",
+    experience: "18+ years of experience in corporate taxation",
+    specialization: "Corporate Tax Planning, Tax Audits",
+    image: null
   }
 ];
 
@@ -89,8 +118,8 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About Us | Jagdish Aggarwal & Co</title>
-        <meta name="description" content="Learn about Jagdish Aggarwal & Co, our history, our team of expert chartered accountants, and our commitment to excellence in tax consultancy." />
+        <title>About Us | Goel Partners & Co</title>
+        <meta name="description" content="Learn about Goel Partners & Co, our history, our team of expert chartered accountants, and our commitment to excellence in tax consultancy." />
       </Helmet>
       <Navbar />
       
@@ -121,7 +150,7 @@ export default function About() {
               <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-3">OUR STORY</span>
               <h2 className="text-3xl font-bold text-blue-900 mb-6">Who We Are</h2>
               <p className="text-lg text-gray-700 mb-6">
-                Jagdish Aggarwal & Co is a trusted chartered accountancy firm with decades of experience in direct and indirect tax consultancy. Our mission is to deliver reliable, transparent, and client-focused solutions for individuals and businesses.
+                Goel Partners & Co is a trusted chartered accountancy firm with decades of experience in direct and indirect tax consultancy. Our mission is to deliver reliable, transparent, and client-focused solutions for individuals and businesses.
               </p>
               <p className="text-gray-700 mb-6">
                 Founded in 1998, we have grown from a small practice to a respected firm with a team of experienced professionals dedicated to helping our clients navigate the complexities of taxation and financial management.
@@ -173,26 +202,37 @@ export default function About() {
         <section className="mb-20">
           <div className="text-center mb-12">
             <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-3">OUR TEAM</span>
-            <h2 className="text-3xl font-bold text-blue-900 mb-4">Meet Our Experts</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Our team of experienced professionals is dedicated to your success</p>
+            <h2 className="text-3xl font-bold text-blue-900 mb-4">Meet Our Partners</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">Our leadership team brings decades of experience and expertise to serve your financial needs</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="bg-blue-100 h-32 flex items-center justify-center">
-                  <div className="bg-blue-700 w-20 h-20 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </div>
+            {partners.map((partner, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-2">
+                <div className="h-64 bg-gray-200">
+                  {partner.image ? (
+                    <img src={partner.image} alt={partner.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-blue-100">
+                      {/* Use more specific person icons */}
+                      {partner.name.includes("Rajiv") && (
+                        <FaUserTie className="text-7xl text-blue-700" />
+                      )}
+                      {partner.name.includes("Amit") && (
+                        <FaUserAlt className="text-7xl text-blue-700" />
+                      )}
+                      {partner.name.includes("Priya") && (
+                        <FaFemale className="text-7xl text-blue-700" />
+                      )}
+                    </div>
+                  )}
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-blue-900 mb-1">{member.name}</h3>
-                  <p className="text-blue-700 font-medium mb-4">{member.position}</p>
-                  <p className="text-gray-600 mb-4">{member.bio}</p>
-                  <div className="flex items-center text-gray-500">
-                    <FaGraduationCap className="mr-2" />
-                    <span>{member.education}</span>
-                  </div>
+                  <h3 className="text-xl font-bold text-blue-900 mb-1">{partner.name}</h3>
+                  <p className="text-blue-700 font-medium mb-3">{partner.position}</p>
+                  <p className="text-gray-600 mb-2"><strong>Qualification:</strong> {partner.qualification}</p>
+                  <p className="text-gray-600 mb-2"><strong>Experience:</strong> {partner.experience}</p>
+                  <p className="text-gray-600"><strong>Specialization:</strong> {partner.specialization}</p>
                 </div>
               </div>
             ))}

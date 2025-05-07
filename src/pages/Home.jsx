@@ -51,7 +51,7 @@ const testimonials = [
   {
     name: "Rajesh Kumar",
     company: "Kumar Enterprises",
-    text: "Jagdish Aggarwal & Co has been handling our tax matters for over 5 years. Their expertise and attention to detail have saved us significant amounts in tax liabilities.",
+    text: "Goel Partners & Co has been handling our tax matters for over 5 years. Their expertise and attention to detail have saved us significant amounts in tax liabilities.",
     rating: 5,
   },
   {
@@ -66,17 +66,17 @@ const contactInfo = [
   {
     icon: <FaPhone className="text-blue-700" />,
     title: "Call Us",
-    info: "+91-XXXXXXXXXX"
+    info: "+91-9996130811"
   },
   {
     icon: <FaEnvelope className="text-blue-700" />,
     title: "Email Us",
-    info: "info@jagdishaggarwal.com"
+    info: "info@goelpartners.com"
   },
   {
     icon: <FaMapMarkerAlt className="text-blue-700" />,
     title: "Visit Us",
-    info: "123 Main Street, New Delhi, India"
+    info: "405, Emaar Palm Spring Plaza, Sector 54, Gurugram"
   }
 ];
 
@@ -157,7 +157,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Jagdish Aggarwal & Co | Chartered Accountancy Firm</title>
+        <title>Goel Partners & Co | Chartered Accountancy Firm</title>
         <meta name="description" content="Trusted chartered accountants specializing in direct and indirect tax consultancy, GST, audits, and strategic advisory." />
       </Helmet>
       <Navbar />
@@ -187,17 +187,17 @@ export default function Home() {
         </div>
       </div>
       
-      {/* Quick Contact Bar with Hover Effects */}
-      <div className="bg-white py-6 shadow-md sticky top-0 z-20">
+      {/* Quick Contact Bar with responsive layout - preserving mobile design */}
+      <div className="bg-white py-6 shadow-md">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center md:justify-between items-center">
-            <div className="text-center md:text-left mb-4 md:mb-0">
-              <h3 className="text-blue-900 font-bold">Need Immediate Assistance?</h3>
+          <div className="flex flex-col items-center">
+            <div className="text-center mb-6">
+              <h3 className="text-blue-900 font-bold text-xl">Need Immediate Assistance?</h3>
             </div>
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="w-full flex flex-col md:flex-row md:justify-center md:space-x-8">
               {contactInfo.map((item, index) => (
-                <div key={index} className="flex items-center hover:bg-blue-50 p-2 rounded-lg transition-colors duration-300">
-                  <div className="mr-2 text-xl">{item.icon}</div>
+                <div key={index} className="flex items-start mb-4 md:mb-0 px-4 md:items-center md:justify-center">
+                  <div className="text-xl text-blue-700 mt-1 mr-3 md:mt-0">{item.icon}</div>
                   <div>
                     <p className="text-sm text-gray-600">{item.title}</p>
                     <p className="font-semibold text-blue-900">{item.info}</p>
@@ -379,20 +379,20 @@ export default function Home() {
         </section>
         
         {/* Contact CTA Section with Enhanced Design */}
-        <section className="bg-gradient-to-r from-blue-800 to-blue-600 p-10 rounded-lg text-center text-white relative overflow-hidden">
+        <section className="bg-gradient-to-r from-blue-800 to-blue-600 p-6 md:p-10 rounded-lg text-center text-white relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute top-0 left-0 w-full h-full bg-pattern opacity-10"></div>
           
           <div className="relative z-10">
-            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="mb-8 max-w-2xl mx-auto text-blue-100">Contact us today for a consultation and discover how we can help optimize your tax strategy.</p>
             
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href="/contact" className="bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 inline-flex items-center transform hover:scale-105">
+            <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
+              <a href="/contact" className="bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 inline-flex items-center justify-center transform hover:scale-105">
                 <FaEnvelope className="mr-2" />
                 Contact Us
               </a>
-              <a href="tel:+91XXXXXXXXXX" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition duration-300 inline-flex items-center transform hover:scale-105">
+              <a href="tel:+919996130811" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition duration-300 inline-flex items-center justify-center transform hover:scale-105">
                 <FaPhone className="mr-2" />
                 Call Now
               </a>
